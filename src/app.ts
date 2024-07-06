@@ -8,6 +8,7 @@ import userRoutes from "./routes/userRoutes";
 dotenv.config();
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
@@ -27,5 +28,3 @@ sequelize
     .catch((err) => {
         console.error("Unable to connect to the database:", err);
     });
-
-const port = process.env.PORT || 3000;

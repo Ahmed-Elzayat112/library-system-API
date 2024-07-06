@@ -11,6 +11,7 @@ const bookRoutes_1 = __importDefault(require("./routes/bookRoutes"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
+const port = process.env.PORT || 3000;
 app.use(express_1.default.json());
 app.use("/authors", authorRoutes_1.default);
 app.use("/books", bookRoutes_1.default);
@@ -27,4 +28,3 @@ database_1.default
     .catch((err) => {
     console.error("Unable to connect to the database:", err);
 });
-const port = process.env.PORT || 3000;

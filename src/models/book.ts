@@ -5,10 +5,10 @@ import {
     ForeignKey,
     BelongsTo,
 } from "sequelize-typescript";
-import { Author } from "./author";
+import Author from "./author";
 
 @Table
-export class Book extends Model {
+export default class Book extends Model {
     @Column
     title!: string;
 

@@ -1,8 +1,8 @@
 import { Table, Column, Model, HasMany } from "sequelize-typescript";
-import { Book } from "./book";
+import Book from "./book";
 
 @Table
-export class Author extends Model {
+export default class Author extends Model {
     @Column
     name!: string;
 

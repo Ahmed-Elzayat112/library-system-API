@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const passport_1 = __importDefault(require("passport"));
 const passport_jwt_1 = require("passport-jwt");
-const user_1 = require("../models/user");
+const user_1 = __importDefault(require("../models/user"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const options = {
@@ -23,7 +23,7 @@ const options = {
 };
 passport_1.default.use(new passport_jwt_1.Strategy(options, (payload, done) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const user = yield user_1.User.findByPk(payload.id);
+        const user = yield user_1.default.findByPk(payload.id);
         if (user) {
             return done(null, user);
         }

@@ -21,7 +21,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 let User = class User extends sequelize_typescript_1.Model {
@@ -46,7 +45,6 @@ let User = class User extends sequelize_typescript_1.Model {
         });
     }
 };
-exports.User = User;
 __decorate([
     (0, sequelize_typescript_1.Column)({
         allowNull: false,
@@ -76,9 +74,10 @@ __decorate([
     __metadata("design:paramtypes", [User]),
     __metadata("design:returntype", Promise)
 ], User, "hashPassword", null);
-exports.User = User = __decorate([
+User = __decorate([
     (0, sequelize_typescript_1.Table)({
         tableName: "users",
         timestamps: true,
     })
 ], User);
+exports.default = User;

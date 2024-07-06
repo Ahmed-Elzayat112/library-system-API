@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { Author } from "../models/author";
-import { Book } from "../models/book";
+import Author from "../models/author";
+import Book from "../models/book";
 
 export const getAllAuthors = async (req: Request, res: Response) => {
     try {

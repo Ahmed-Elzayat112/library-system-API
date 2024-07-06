@@ -1,10 +1,9 @@
 import { Sequelize } from "sequelize-typescript";
 import dotenv from "dotenv";
-import { Author } from "../models/author";
-import { Book } from "../models/book";
-import { User } from "../models/user";
+import { join } from "path";
 
 dotenv.config();
+console.log(join(__dirname, "..", "models.*.{ts,js}"));
 
 const sequelize = new Sequelize({
     database: process.env.DB_NAME,
@@ -13,8 +12,9 @@ const sequelize = new Sequelize({
     password: process.env.DB_PASS,
     host: process.env.DB_HOST,
     logging: false,
+    models: [join(__dirname, "..", "models", "*.{ts,js}")],
 });
 
-sequelize.addModels([Author, Book, User]);
+// sequelize.addModels([Author, Book, User]);
 
 export default sequelize;

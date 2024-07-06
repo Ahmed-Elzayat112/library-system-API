@@ -11,7 +11,7 @@ import bcrypt from "bcryptjs";
     tableName: "users",
     timestamps: true,
 })
-export class User extends Model {
+export default class User extends Model {
     @Column({
         allowNull: false,
         type: DataType.STRING,

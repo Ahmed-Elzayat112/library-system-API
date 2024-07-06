@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 
-import { Book } from "../models/book";
+import Book from "../models/book";
 import { paginate } from "../util/pagination";
 
 export const getBooks = async (req: Request, res: Response) => {

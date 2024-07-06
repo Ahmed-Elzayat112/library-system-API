@@ -8,15 +8,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createBook = exports.getBooks = void 0;
-const book_1 = require("../models/book");
+const book_1 = __importDefault(require("../models/book"));
 const pagination_1 = require("../util/pagination");
 const getBooks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const page = parseInt(req.query.page) || 1;
         const pageSize = parseInt(req.query.pageSize) || 10;
-        const books = yield (0, pagination_1.paginate)(book_1.Book, {}, { page, pageSize });
+        const books = yield (0, pagination_1.paginate)(book_1.default, {}, { page, pageSize });
         res.json(books);
     }
     catch (error) {
@@ -26,7 +29,7 @@ const getBooks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.getBooks = getBooks;
 const createBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const newBook = yield book_1.Book.create(req.body);
+        const newBook = yield book_1.default.create(req.body);
         res.status(201).json(newBook);
     }
     catch (error) {

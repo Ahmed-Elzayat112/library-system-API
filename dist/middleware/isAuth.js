@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const user_1 = require("../models/user");
+const user_1 = __importDefault(require("../models/user"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const isAuth = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
@@ -24,7 +24,7 @@ const isAuth = (req, res, next) => __awaiter(void 0, void 0, void 0, function* (
     const token = authHeader.split(" ")[1];
     try {
         const decoded = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET || "your_jwt_secret");
-        const user = yield user_1.User.findByPk(decoded.id);
+        const user = yield user_1.default.findByPk(decoded.id);
         if (!user) {
             return res.status(401).json({ message: "Invalid token" });
         }

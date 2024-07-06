@@ -12,7 +12,6 @@ interface PaginationResult<T> {
     totalCount: number;
     totalPages: number;
 }
-
 export const paginate = async <T extends Model>(
     model: { new (): T } & typeof Model,
     options: FindAndCountOptions,

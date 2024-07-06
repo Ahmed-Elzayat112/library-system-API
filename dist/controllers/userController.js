@@ -14,13 +14,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.adminRoute = exports.protectedRoute = exports.login = exports.register = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const user_1 = require("../models/user");
+const user_1 = __importDefault(require("../models/user"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { username, password, isAdmin } = req.body;
-        const user = yield user_1.User.create({ username, password, isAdmin });
+        const user = yield user_1.default.create({ username, password, isAdmin });
         res.status(201).json(user);
     }
     catch (error) {
@@ -32,7 +32,7 @@ exports.register = register;
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { username, password } = req.body;
-        const user = yield user_1.User.findOne({ where: { username } });
+        const user = yield user_1.default.findOne({ where: { username } });
         if (!user || !(yield user.validatePassword(password))) {
             return res
                 .status(401)
